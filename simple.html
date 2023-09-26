@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+        </style>
+</head>
+<body>
+    
+ <h1> project2 BMi Calculator</h1>
+ <form>
+    <p><label>Enter Height:</label><input type="text" id="Height"></p>
+    <p><label>Enter Weight:</label><input type="text" id="Weight"></p>
+    <input type="submit" value="calculate">
+    <div class="result-value">
+        </div>
+    </form>
+
+    <div class="digital-clock">
+        <h2>digital clock</h2>
+        <p class="clock"></p>
+        </div>
+
+</body>
+<script>
+ const form=document.querySelector("form");
+  form.addEventListener('submit',function(e){
+        e.preventDefault();
+
+        const height=parseInt(document.querySelector("#Height").value);
+  
+        const Weight=parseInt(document.querySelector("#Weight").value);
+
+        if(height==="" || height<0 || isNaN(height))
+        {
+            document.querySelector(".result-value").innerHTML="pleas valid a number"
+        }
+       else if(Weight==="" || Weight<0 || isNaN(Weight))
+        {
+            document.querySelector(".result-value").innerHTML="pleas valid a number"
+        }
+        else{
+            const result=(Weight/(height*height/10000)).toFixed(2);
+            if(result<= 18.4){
+                document.querySelector(".result-value").innerHTML=  "underweight"
+            }
+            if(result>=18.5){
+                document.querySelector(".result-value").innerHTML=  "normal"
+            }
+            if(result>=25.0){
+                document.querySelector(".result-value").innerHTML=  "overweight"
+            }
+            if(result>=40){
+                document.querySelector(".result-value").innerHTML=  "obsee"
+            }
+            
+          
+        }
+        document.querySelector("#Height").value="";
+        document.querySelector("#Weight").value=""
+        
+  })
+
+  const Time=document.querySelector('.clock')
+  
+   
+    
+    setInterval(()=>{
+        const date=new Date();
+       
+ Time.innerHTML= date.toLocaleTimeString();
+    },1000)
+  
+    </script>
+</html>
